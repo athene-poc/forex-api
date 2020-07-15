@@ -42,7 +42,7 @@ var forexJSON = {
                     "date":"2020-07-07"
                 };
 
-module.exports.requestAsync = async function() {
+exports.requestAsync = async function() {
     return new Promise((resolve, reject) => {
         var options = {
             "method": "GET",
@@ -65,7 +65,6 @@ module.exports.requestAsync = async function() {
             res.on("end", function () {
                 var body = Buffer.concat(chunks);
                 forexJSON = JSON.parse(body);
-                console.log(forexJSON);
                 json(forexJSON);
             });
     
@@ -96,9 +95,7 @@ exports.requestAsyncParam = async function(CURRENCY) {
     
             res.on("end", function () {
                 var body = Buffer.concat(chunks);
-                forexJSON = {};
                 forexJSON = JSON.parse(body);
-                console.log(body.toString());
                 json(forexJSON);
             });
     
