@@ -42,7 +42,7 @@ var forexJSON = {
                     "date":"2020-07-07"
                 };
 
-exports.requestAsync = async function() {
+exports.requestAsync = function() {
     return new Promise((resolve, reject) => {
         var options = {
             "method": "GET",
@@ -66,6 +66,7 @@ exports.requestAsync = async function() {
                 var body = Buffer.concat(chunks);
                 forexJSON = JSON.parse(body);
                 json(forexJSON);
+                resolve(forexJSON);
             });
     
         });
@@ -73,7 +74,7 @@ exports.requestAsync = async function() {
     });
 }
 
-exports.requestAsyncParam = async function(CURRENCY) {
+exports.requestAsyncParam = function(CURRENCY) {
     return new Promise((resolve, reject) => {
         var options = {
             "method": "GET",
@@ -97,6 +98,7 @@ exports.requestAsyncParam = async function(CURRENCY) {
                 var body = Buffer.concat(chunks);
                 forexJSON = JSON.parse(body);
                 json(forexJSON);
+                resolve(forexJSON);
             });
     
         });
